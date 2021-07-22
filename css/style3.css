@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap');
+
+/* ======= variabel css ======= */
+:root{
+    --header-height: 3rem;
+
+/* ======= color  ======= */
+    /* 190: green dark*/
+    /* 171: green */
+    /* 200: blue */
+
+    --hue-color: 190;
+
+    /* hsl color mode */
+    --first-color: hsl(var(--hue-color), 64%, 22%);
+    --first-color-second: hsl(var(--hue-color), 64%, 22%);
+    --first-color-alt: hsl(var(--hue-color), 64%, 15%);
+    --title-color: hsl(var(--hue-color), 64%, 18%);
+    --text-color: hsl(var(--hue-color), 24%, 35%);
+    --text-color-light: hsl(var(--hue-color), 8%, 60%) ;
+    --input-color: hsl(var(--hue-color), 24%, 97%);
+    --body-color: hsl(var(--hue-color), 100%, 99%);
+    --white-color: #FFF;
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
+    --background-color: var(--first-color);
+    --background-color-title: hsl(30deg 75% 62%);
+
+/* ======= font and typography  ======= */
+    --body-font: 'Open Sans', sans-serif;
+    --title-font: 'Raleway', sans-serif;
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+/* ======= font weight  ======= */
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+/* ======= Margin  ======= */
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-25: 1.25rem;
+    --mb-1-5: 1.5rem;
+    --mb-1-75: 1.75rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+
+/* ======= z index  ======= */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+/* ======= hover overlay  ======= */
+    --img-trasition: .3s;
+    --img-hidden: hidden;
+    --img-scale: scale(1.2)
+}
+
+@media screen and (min-width: 968px){
+    :root{
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;        
+    }
+}
+
+/* ======= base  ======= */
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+h1,
+h2,
+h3{
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    font-family: var(--title-color);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    /* color: #f7b27c; */
+}
+
+img,
+video{
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input{
+    border: none;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+button{
+    cursor: pointer;
+}
+
+input{
+    outline: none;
+}
+
+/* ======= Reusable CSS Classes ======= */
+.section{
+    padding: 4.5rem 2rem 2.5rem 2rem;
+}
+
+.section__title{
+    font-size: var(--h2-font-size);
+    color: var(--title-color);
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: var(--mb-2);
+}
+
+.container{
+    /* max-width: 968px; INI YANG DIGANTI  */
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+}
+
+.grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
+.about > .grid{
+    gap: 1rem;
+}
+
+/* ======= HEADER  ======= */
+.header{
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: var(--white-color);
+}
+
+/* ======= NAV  ======= */
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem .5rem;
+}
+
+.nav__toggle{
+    color: var(--white-color);
+}
+
+.nav__logo,
+.nav__link{
+    text-decoration: none;
+    color: var(--title-color);
+}
+
+.nav__logo{
+    font-weight: var(--font-semi-bold);
+}
+
+.nav__toggle{
+    font-size: 1.2rem;
+    cursor: pointer; /* yang buat cursor jadi pointer kalau sentuh nav__toggle */
+}
+
+.nav__menu{
+    position: relative;
+}
+
+.nav__list{
+    display: flex;
+    /* column-gap: 5rem; */
+    margin-right: 2rem;
+}
+
+.nav__link{
+    padding: 2rem 2rem;
+}
+
+.nav__link:hover{
+    background-color: var(--text-color);
+    color:var(--white-color)
+    /* padding: 1rem 1rem; */
+}
+
+.nav__active{
+    background-color: var(--text-color);
+    color:var(--white-color)
+}
+/* ======= HEADER ABOUT  ======= */
+
+.header__img-one{
+    height: 200px;
+    /* object-position: 0 10%; */
+    width: 100%;
+    object-fit: cover;
+}
+
+.header__title{
+    position: absolute;
+    bottom: 5rem;
+    margin-left: var(--mb-2);
+    background-color: var(--background-color);
+    padding: .75rem 2rem;
+    border-radius: 10px;
+    color: var(--white-color);
+}
+
+
+/* ======= CONTENT  ======= */
+.content__container{
+    /* display: flex; */
+    grid-template-columns: 75% 25%;
+    column-gap: 5rem;
+    /* display: table; */
+}
+
+
+/* ============== ARTICLE ============== */
+.article__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-columns: 50% 50%; */
+    gap: 4rem;
+    max-height: 200px;
+    /* flex: 3; */
+    /* max-width: 900px; */
+}
+
+.article__card{
+    /* max-height: 550px; */
+    max-width: 500px;
+    overflow: var(--img-hidden);
+}
+
+/* .article__img:hover{
+    transform: var(--img-scale);
+}
+
+.article__img{
+    transition: .4s;
+    overflow: hidden;
+} */
+
+
+
+.article__img,
+.article__text{
+    width: 500px;
+}
+
+.like__button{
+    font-size: 20px;
+    background: none;
+}
+
+.article__footer{
+    margin-top: .5rem;
+    /* max-width: 300px; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.article__page-number{
+    /* position: absolute;
+    bottom: 0; */
+}
+
+.article__page-number{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .article__page__container{
+    display: block;
+    text-align: center
+} */
+
+.number,
+.next__page,
+.prev__page{
+    padding: 0 1rem;
+}
+
+.number:hover,
+.number__active{
+    background-color: var(--first-color-alt);
+    color: var(--white-color);
+}
+
+
+/* ============== INFO ============== */
+.info__container{
+    max-width: 300px;
+    text-align: center;
+}
+
+.search__bar-input{
+    border: 1px solid black
+}
+
+/* ============== SEARCH BAR ============== */
+.search__icon{
+    /* background: none; */
+    display: inline-block;
+    /* position: absolute;
+    bottom: ; */
+}
+
+.search__form{
+    display: flex;
+    column-gap: .5rem;
+}
+
+.search__button{
+    background: none;
+}
+
+.search__form{
+    justify-content: center;
+}
+
+.search__bar-input{
+    display: inline-block;
+    width: 300px;
+    position: relative;
+    border-radius: 20px;
+    padding: 0 .5rem;
+}
+
+
+/* ============== PLACE TAG / CATEGORY============== */
+.place__tag__container{
+    /* display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem; */
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8rem;
+    row-gap: 2rem;
+}
+
+.place__tag{
+    width: 70px;
+}
+
+.category__container{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.category__title{
+    font-size: var(--h3-font-size);
+    background-color: aqua;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+/* ============== POPULAR POST ============== */
+.post__footer{
+    font-size: var(--smaller-font-size);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post__subtitle{
+    margin: .5rem 0;
+    text-align: initial
+}
+
+/* ============== TAG ============== */
+.tag__container__subtitle{
+    grid-template-columns: 50% 30%;
+}
+
+.tag__button{
+    background: none;
+}
+
+.tag__subtitle{
+    font-family: var(--body-font);
+}
+
+
+/* ============== FOOTER ============== */
+
+.footer__section{
+    padding: 0;
+}
+
+.footer__container{
+    row-gap: 5rem;
+    background-color: var(--first-color);
+}
+
+.footer__content{
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    row-gap: 2rem;
+}
+
+.footer__title,
+.footer__subtitle{
+    font-size: var(--h3-font-size);
+}
+
+.footer__title{
+    margin-bottom: var(--mb-0-5);
+    color: var(--text-color-light);
+}
+
+.footer__description{
+    margin-bottom: var(--mb-2);
+    color: var(--text-color-light);
+}
+
+.footer__social{
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-right: var(--mb-1-25);
+}
+
+.footer__subtitle{
+    margin-bottom: var(--mb-1);
+}
+
+.footer__item{
+    margin-bottom: var(--mb-0-75);
+}
+
+.footer__link{
+    color: var(--text-color);
+}
+
+.footer__link:hover,
+.footer__social:hover{
+    color: var(--white-color);
+}
+
+.footer__rights{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.footer__copy,
+.footer__terms-link{
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+}
+
+.footer__terms{
+    display: flex;
+    column-gap: 1.5rem;
+    justify-content: center;
+}
+
+.footer__terms-link:hover{
+    color: var(--white-color);
+}
+
+/* =============== Scroll Bar =============== */
+::-webkit-scrollbar{
+    width: .60rem;
+    background-color: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--scroll-thumb-color);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--text-color-light);
+}
