@@ -228,7 +228,7 @@ input{
 
 .header__img-one{
     height: 200px;
-    width: max-content;
+    width: 100%;
     object-fit: cover;
 }
 
